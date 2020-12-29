@@ -1,7 +1,33 @@
 version: '3' # composeファイルのバーション指定
 services:
   app: # service名
-    build: . # ビルドに使用するDockerfileがあるディレクトリ指定
+    build: ./go # ビルドに使用するDockerfileがあるディレクトリ指定
     tty: true # コンテナの起動永続化
     volumes:
       - $PWD/../src:/go/src/work # マウントディレクトリ指定
+  elasticsearch:
+    build: ./elasticsearch
+    volumes:
+      - elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - cluster.name=laradock-cluster
+      - node.name=laradock-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - cluster.initial_master_nodes=laradock-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  kibana:
+    build: ./kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+volumes:
+  elasticsearch:
+    driver: local
