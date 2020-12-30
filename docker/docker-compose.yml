@@ -47,6 +47,10 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
+    networks:
+      elasticsearch:
+        ipv4_address: 172.54.0.55
+
 volumes:
   elasticsearch:
     driver: local

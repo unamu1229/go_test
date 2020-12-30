@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="86a72f02-84be-4202-8372-ebd60f9f79b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ElasticSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ElasticSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/search/elasticSearch.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/elasticSearch.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
