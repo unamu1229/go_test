@@ -9,6 +9,10 @@ import (
 
 func main() {
 	start := time.Now().UnixNano()
+	for i := 0; i < 100; i++ {
+		fmt.Println(i)
+		search.Get()
+	}
 	body := search.Get()
 	fmt.Println(body)
 	fmt.Println("実行速度 秒", float64(time.Now().UnixNano() - start) / 1000000000)

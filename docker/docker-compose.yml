@@ -7,11 +7,19 @@ services:
       - $PWD/../src:/go/src # マウントディレクトリ指定
     environment:
       - "GOPATH=/go"
+    networks:
+      elasticsearch:
+        ipv4_address: 172.54.0.2
+
   php:
     build: ./php
     tty: true
     volumes:
       - $PWD/../src:/var/www/php
+    networks:
+      elasticsearch:
+        ipv4_address: 172.54.0.3
+
   elasticsearch:
     build: ./elasticsearch
     volumes:
@@ -29,6 +37,10 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    networks:
+      elasticsearch:
+        ipv4_address: 172.54.0.54
+
   kibana:
     build: ./kibana
     ports:
@@ -38,3 +50,9 @@ services:
 volumes:
   elasticsearch:
     driver: local
+
+networks:
+  elasticsearch:
+    ipam:
+      config:
+        - subnet: 172.54.0.0/24
