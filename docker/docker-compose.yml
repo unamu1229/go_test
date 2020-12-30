@@ -4,7 +4,14 @@ services:
     build: ./go # ビルドに使用するDockerfileがあるディレクトリ指定
     tty: true # コンテナの起動永続化
     volumes:
-      - $PWD/../src:/go/src/work # マウントディレクトリ指定
+      - $PWD/../src:/go/src # マウントディレクトリ指定
+    environment:
+      - "GOPATH=/go"
+  php:
+    build: ./php
+    tty: true
+    volumes:
+      - $PWD/../src:/var/www/php
   elasticsearch:
     build: ./elasticsearch
     volumes:

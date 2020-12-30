@@ -6,7 +6,7 @@ import (
 )
 
 func Get() string {
-	resp, _ := http.Get("http://localhost:9200/search_job/_search")
+	resp, _ := http.Get("http://172.19.0.3:9200/search_job/_search")
 	defer resp.Body.Close()
 	body, _ := ioutil.ReadAll(resp.Body)
 
