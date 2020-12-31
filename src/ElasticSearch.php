@@ -20,9 +20,41 @@ class ElasticSearch
 
         curl_close($ch);
     }
+
+    public function make(int $id)
+    {
+        $ch = curl_init("http://172.54.0.54:9200/search_job/_doc/" . $id);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->station($id)));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_exec($ch);
+        curl_close($ch);
+    }
+
+    public function station(int $id)
+    {
+        return [
+            'pref' => '東京' . $id,
+            'employment' => 'full-time',
+            'line' => [
+                'name' => '山手線',
+                'station' => [
+                    '東京'
+                ]
+            ]
+        ];
+    }
 }
 echo 'start';
+
+
 $start = microtime(true);
 $es = new ElasticSearch();
-$es->get();
+//$es->get();
+//$es->make(2);
+for ($i = 0; $i < 100; $i++) {
+    $es->make($i);
+}
 var_dump(microtime(true) - $start);
