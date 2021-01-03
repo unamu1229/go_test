@@ -28,7 +28,7 @@ class ElasticSearch
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->station($id)));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json;  charset=UTF-8']);
         curl_exec($ch);
         curl_close($ch);
     }
@@ -52,9 +52,9 @@ echo 'start';
 
 $start = microtime(true);
 $es = new ElasticSearch();
-//$es->get();
+$es->get();
 //$es->make(2);
-for ($i = 0; $i < 100; $i++) {
-    $es->make($i);
-}
+//for ($i = 0; $i < 100; $i++) {
+//    $es->make($i);
+//}
 var_dump(microtime(true) - $start);
