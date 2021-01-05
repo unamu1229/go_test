@@ -6,7 +6,7 @@ class ElasticSearch
 
     public function get()
     {
-        $ch = curl_init("http://172.54.0.54:9200/search_job/_search");
+        $ch = curl_init("http://elasticsearch:9200/search_job/_search");
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -23,7 +23,7 @@ class ElasticSearch
 
     public function make(int $id)
     {
-        $ch = curl_init("http://172.54.0.54:9200/search_job/_doc/" . $id);
+        $ch = curl_init("http://elasticsearch:9200/search_job/_doc/" . $id);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($this->station($id)));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

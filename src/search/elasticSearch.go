@@ -52,8 +52,8 @@ type GetBody struct {
 }
 
 func Get(id int) string {
-	//url := "http://172.54.0.54:9200/search_job/_search"
-	url := "http://127.0.0.1:9200/search_job/_search"
+	url := "http://elasticsearch:9200/search_job/_search"
+	//url := "http://127.0.0.1:9200/search_job/_search"
 	var getBody = GetBody{}
 	getBody.Query.Term.ID = strconv.Itoa(id)
 	v, _ := json.Marshal(getBody)
