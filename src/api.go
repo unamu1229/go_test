@@ -13,6 +13,6 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
-func index(response http.ResponseWriter, _ *http.Request) {
-	response.Write([]byte("fugafuga"))
+func index(response http.ResponseWriter, req *http.Request) {
+	response.Write([]byte(req.URL.Path))
 }
