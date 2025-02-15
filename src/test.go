@@ -7,6 +7,9 @@ import (
 
 func main() {
 
+	var hoge [2]int = [2]int{2, 8}
+	//append(hoge, 3)
+	fmt.Println(hoge)
 	//hoge := "\\u6771\\u4eac"
 	//unquote, _ := strconv.Unquote(`"` + hoge + `"`)
 	//fmt.Println(unquote)

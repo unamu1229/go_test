@@ -49,6 +49,13 @@ class ElasticSearch
 }
 echo 'start';
 
+if (!$hoge = 0) {
+    var_dump($hoge);
+}
+
+var_dump($hoge);
+
+return;
 
 $start = microtime(true);
 $es = new ElasticSearch();
